@@ -15,6 +15,8 @@
 	adapted for numpy ndarrays
 '''
 
+import numpy as np
+
 # custom decorator for timing functions
 from time_this import time_this
 
@@ -61,7 +63,7 @@ def combine_fast(image1, image2):
 	# using the appromimate formula gm = |gx(x,y)| + |gy(x,y)|
 	return abs(image1) + abs(image2)
 
-def get_edges(image):
+def edge_image(image):
 	edges_h = sobel_horizontal(image)
 	edges_v = sobel_vertical  (image)
 	return  combine(edges_h, edges_v)
@@ -70,5 +72,5 @@ def get_edges(image):
 ##########################  sharpen  ###########################
 
 def sharpen(image):
-	edges = get_edges(image)
+	edges = edge_image(image)
 	return  combine(image, edges)

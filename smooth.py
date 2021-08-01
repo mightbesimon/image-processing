@@ -1,3 +1,5 @@
+import numpy as np
+
 def mean(image):
 	copy = image[2:] + image[1:-1] + image[:-2]
 	copy = copy[:,2:] + copy[:,1:-1] + copy[:,:-2]
@@ -9,4 +11,6 @@ def mean_5(image):
 	return np.pad(copy/25, 2)
 
 def gaussian(image):
-	...
+	copy = image[2:] + 2*image[1:-1] + image[:-2]
+	copy = copy[:,2:] + 2*copy[:,1:-1] + copy[:,:-2]
+	return np.pad(copy/16, 1)
